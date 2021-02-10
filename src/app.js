@@ -71,8 +71,8 @@ function getWeather(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=${units}`;
   axios.get(apiUrl).then(displayWeather);
 
-  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=${units}`;
-  axios.get(apiUrl).then(displayForecast);
+  //apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=${units}`;
+  //axios.get(apiUrl).then(displayForecast);
 }
 
 let searchButton = document.querySelector("#button-addon2");
@@ -94,32 +94,31 @@ function showPosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayWeather);
 
-  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(displayForecast);
+  //apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+  //axios.get(apiUrl).then(displayForecast);
 }
 
 //change from Celcius to Farenheit
-function changeFarenheit(event) {
+let celsiusTemp = null;
+
+function changeFahreneit(event) {
   event.preventDefault();
+  let fahreneitLink = document.querySelector("#temp-display");
+  fahreneitLink.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
   celsiusLink.classList.remove("active");
-  farenheitLink.classList.add("active");
-  let farenheitTemp = document.querySelector("#temp-display");
-  farenheitTemp.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
+  fahreneitLink.classList.add("active");
 }
+let fahreneitLink = document.querySelector("#fahrenheit-link");
+fahreneitLink.addEventListener("click", changeFahreneit);
 
 function changeCelsius(event) {
   event.preventDefault();
-  celsiusLink.classList.add("active");
-  farenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temp-display");
   temperatureElement.innerHTML = celsiusTemp;
+  celsiusLink.classList.add("active");
+  fahreneitLink.classList.remove("active");
 }
-let celsiusTemp = null;
-
-let farenheitLink = document.querySelector("#farenheit-link");
-farenheitLink.addEventListener(`click`, changeFarenheit);
-
 let celsiusLink = document.querySelector("#celsius-link");
-celsiusLinkutton.addEventListener("click", changeCelsius);
+celsiusLink.addEventListener("click", changeCelsius);
 
 getLocalWeather();
