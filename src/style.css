@@ -1,6 +1,5 @@
 .mainContainer {
   font-family: "Raleway", sans-serif;
-  font-weight: bold;
   display: block;
   border: solid 2px black;
   padding-top: 10px;
@@ -23,12 +22,12 @@
 .units {
   font-size: 20px;
   position: relative;
-  top: -7px;
+  top: -14px;
   right: -4px;
 }
-
-.rowForecast {
-  font-weight: bolder;
+.units .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
 }
 
 .search-form {
@@ -49,6 +48,44 @@ li {
 footer p {
   text-align: center;
 }
+
+#country {
+  font-size: 10px;
+}
+#dateTime {
+  font-size: 20px;
+}
 #description {
   text-transform: capitalize;
+}
+
+.weather-forecast {
+  margin-top: 10px;
+}
+
+.weather-forecast h3 {
+  color: black;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  height: 15px;
+  line-height: 15px;
+  padding-top: 7px;
+}
+
+.weather-forecast img {
+  display: block;
+  margin: 0 auto;
+  height: 48px;
+  width: 48px;
+}
+
+.weather-forecast-temperature {
+  text-align: center;
+  color: black;
+  font-size: 13px;
+  font-weight: 400;
+  height: auto;
+  line-height: 15px;
+  white-space: nowrap;
 }
