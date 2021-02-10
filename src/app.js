@@ -122,25 +122,25 @@ function showPosition(position) {
 //change from Celcius to Farenheit
 function changeFarenheit(event) {
   event.preventDefault();
-  celciusButton.classList.remove("active");
-  farenheitButton.classList.add("active");
+  celsiusLink.classList.remove("active");
+  farenheitLink.classList.add("active");
   let farenheitTemp = document.querySelector("#temp-display");
   farenheitTemp.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
 }
 
-function changeCelcius(event) {
+function changeCelsius(event) {
   event.preventDefault();
-  celciusButton.classList.add("active");
-  farenheitButton.classList.remove("active");
+  celsiusLink.classList.add("active");
+  farenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temp-display");
   temperatureElement.innerHTML = celsiusTemp;
 }
 let celsiusTemp = null;
 
-let farenheitButton = document.querySelector("#farenheit-button");
+let farenheitLink = document.querySelector("#farenheit-link");
 farenheitButton.addEventListener(`click`, changeFarenheit);
 
-let celciusButton = document.querySelector("#celcius-button");
-celciusButton.addEventListener("click", changeCelcius);
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusButton.addEventListener("click", changeCelsius);
 
 getLocalWeather();
