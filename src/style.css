@@ -54,6 +54,7 @@ footer p {
 }
 #dateTime {
   font-size: 20px;
+  margin: 0;
 }
 #description {
   text-transform: capitalize;
