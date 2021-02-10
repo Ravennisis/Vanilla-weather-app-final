@@ -34,7 +34,7 @@
           <div class="col-3">
             <input
               type="search"
-              placeholder="Enter your city name.."
+              placeholder="Enter city.."
               autofocus="on"
               autocomplete="off"
               id="search-bar"
@@ -65,7 +65,7 @@
       </div>
       <div class="col">
         <span class="temperature">
-          <span id="temp-display">8</span><span class="units"><a href="#" id="celsius-link">°C</a> |<a href="#" id="fahrenheit-link">°F</a></span></span>
+          <span id="temp-display">8</span><span class="units"><a href="#" class="active" id="celsius-link">°C</a> |<a href="#" id="fahrenheit-link">°F</a></span></span>
         <p id= "description"></p>
       </div>
       <div class="col">
@@ -73,24 +73,10 @@
           <li>Humidity: <span id="humidity"></span></li>
           <li>Wind: <span id="wind-speed"></span></li></ul>
       </div>
-      <div class="col">
-          <ul><li>Sunrise: <span id="sunrise"></span></li>
-          <li>Sunset: <span id="sunset"></span></li></ul>
-      </div>
     </div>
   </div>
   <hr>
-  <div class="rowForecast" id="TO BE SET"><p>Forecast:</p></div>
-  <div class="row">
-      <div class="col"></div>
-      <div class="col"><p>🌧</p><p>Tuesday</p></div>
-      <div class="col"><p>🌤</p><p>Wednesday</p></div>
-      <div class="col"><p>☀</p><p>Thursday</p></div>
-      <div class="col"><p>🥶</p><p>Friday</p></div>
-      <div class="col"><p>🌤</p><p>Saturday</p></div>
-      <div class="col"><p>☀</p><p>Sunday</p></div>
-      <div class="col"><p>+</p></div>
-  </div>
+  <div class="row weather-forecast" id="forecast"></div>
 </header>
 <br>
     <footer>

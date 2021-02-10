@@ -1,11 +1,14 @@
 .mainContainer {
-  border: solid black 3px;
-  max-width: 75%;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
   display: block;
-  margin: 0 auto;
-  margin-top: 50px;
-  background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
-  font-family: Raleway;
+  border: solid 2px black;
+  padding-top: 10px;
+  margin: 50px auto;
+  padding: 10px;
+  max-width: 800px;
+  border-radius: 20px;
+  background-image: linear-gradient(-225deg, #e3fdf5 0%, #ffe6fa 100%);
 }
 
 .btn {
@@ -45,4 +48,7 @@ li {
 
 footer p {
   text-align: center;
+}
+#description {
+  text-transform: capitalize;
 }

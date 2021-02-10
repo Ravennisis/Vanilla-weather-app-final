@@ -7,13 +7,13 @@ function changeTime() {
     minutes = `0${minutes}`;
   }
   let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat"
   ];
   let day = days[currentTime.getDay()];
   return `${day} ${hour}:${minutes}`;
@@ -60,7 +60,33 @@ function displayWeather(response) {
   wind.innerHTML = `${response.data.wind.speed}mph`;
 }
 //display forecast
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
 
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+    <div class="col-2">
+      <h3>
+        ${formatTime(forecast.dt * 1000)}
+      </h3>
+      <img
+        src="http://openweathermap.org/img/wn/${
+          forecast.weather[0].icon
+        }@2x.png"
+      />
+      <div class="weather-forecast-temperature">
+        <strong>
+          ${Math.round(forecast.main.temp_max)}°
+        </strong>
+        ${Math.round(forecast.main.temp_min)}°
+      </div>
+    </div>
+  `;
+  }
+}
 
 // city by doing a search
 function getWeather(event) {
@@ -71,8 +97,8 @@ function getWeather(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=${units}`;
   axios.get(apiUrl).then(displayWeather);
 
-  //apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=${units}`;
-  //axios.get(apiUrl).then(displayForecast);
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${key}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 let searchButton = document.querySelector("#button-addon2");
@@ -94,8 +120,8 @@ function showPosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayWeather);
 
-  //apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
-  //axios.get(apiUrl).then(displayForecast);
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 //change from Celcius to Farenheit
