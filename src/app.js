@@ -28,7 +28,7 @@ function formatTime(timestamp) {
   let minutes = currentTime.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
-  }
+  } 
 
   return `${hour}:${minutes}`;
 }
@@ -44,7 +44,6 @@ function displayWeather(response) {
   let feels = Math.round(response.data.main.feels_like);
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind-speed");
-  let pressure = document.querySelector("#pressure");
 
   celsiusTemp = Math.round(response.data.main.temp);
 
@@ -59,29 +58,9 @@ function displayWeather(response) {
   feelsLike.innerHTML = `${feels}°`;
   humidity.innerHTML = `${response.data.main.humidity}%`;
   wind.innerHTML = `${response.data.wind.speed}mph`;
-  pressure.innerHTML = `${response.data.main.pressure} mbar`;
 }
 //display forecast
-function displayForecast(response) {
-  let forecastElement = document.querySelector("#forecast");
-  let forecast = null;
 
-  console.log(forecast);
-
-  for (let index = 0; index < 6; index++) {
-    forecast = response.data.list[index];
-    forecastElement.innerHTML = `
-  <div class="col-2 rounded-pill flex-fill shadow">
-  ${formatTime(forecast.dt * 1000)}
-  <br />
-  <strong>${Math.round(forecast.main.temp_max)} °
-  </strong> ${Math.round(forecast.main.temp_min)}°
-  <img src="http://openweathermap.org/img/wn/${
-    forecast.weather[0].icon
-  }@2x.png" alt="" id="search-result-emoji">
-  </div>`;
-  }
-}
 
 // city by doing a search
 function getWeather(event) {
@@ -138,9 +117,9 @@ function changeCelsius(event) {
 let celsiusTemp = null;
 
 let farenheitLink = document.querySelector("#farenheit-link");
-farenheitButton.addEventListener(`click`, changeFarenheit);
+farenheitLink.addEventListener(`click`, changeFarenheit);
 
 let celsiusLink = document.querySelector("#celsius-link");
-celsiusButton.addEventListener("click", changeCelsius);
+celsiusLinkutton.addEventListener("click", changeCelsius);
 
 getLocalWeather();
